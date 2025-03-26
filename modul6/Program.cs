@@ -27,5 +27,13 @@ static void Main(string[]args)
     user.addVideo(vid9);
     user.addVideo(vid10);
 
+    vid1.IncreasePlayCount(9999);
+    vid9.IncreasePlayCount(99999);
+
+    for(int i = 0; i < 15; i++)
+    {
+        vid2.IncreasePlayCount(25000000);
+    }
+
     user.printAllVideoPlayCount();
 }

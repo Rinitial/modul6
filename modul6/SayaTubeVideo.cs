@@ -16,6 +16,9 @@ namespace modul6
 
         public SayaTubeVideo(string title)
         {
+            if (title == "" || title.Length > 200)
+                throw new Exception("Judul video tidak valid");
+
             this.id = random.Next(00000, 99999);
             this.title = title;
             this.playCount = 0;
@@ -23,7 +26,19 @@ namespace modul6
 
         public void IncreasePlayCount(int play)
         {
-            playCount += play;
+            if (play > 25000000 || play < 0)
+                throw new Exception("Playcount tidak valid");
+            try
+            {
+                checked
+                {
+                    playCount += play;
+                }
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("Playcount melebihi batas tertinggi integer");
+            }
         }
 
         public void printVideoDetails()
